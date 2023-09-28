@@ -1,0 +1,146 @@
+---
+title: "FML Assignment 1"
+author: "Sri Hari Vadhry"
+date: "2023-09-27"
+output: html_document
+---
+
+# Importing the dataset
+
+```{r}
+data<- read.csv("C:/Users/Hari/OneDrive/Desktop/FML/Student marks data.csv")
+
+head(data)
+```
+
+
+# Summary
+
+```{r}
+
+summary(data)
+
+```
+
+# Descriptive Statistics for Quantitative Data
+
+#Mean
+```{r}
+
+mean(data$MathScore)
+
+
+
+```
+
+#Median
+```{r}
+
+median(data$MathScore)
+
+```
+
+#Mode
+```{r}
+
+#install.packages("modeest")
+
+library(modeest)
+
+mlv(data$MathScore, method= 'mfv')
+
+
+```
+
+#Standard Deviation
+```{r}
+
+sd(data$MathScore)
+
+```
+
+#Variance
+```{r}
+
+var(data$MathScore)
+
+```
+
+#Sum
+```{r}
+
+sum(data$MathScore)
+
+```
+
+#Minimum and Maximum
+```{r}
+
+min(data$MathScore)
+
+max(data$MathScore)
+
+
+```
+# Descriptive Statistics for Qualitative Data
+
+```{r}
+
+mlv(data$LunchType, method= 'mfv')
+
+```
+
+
+```{r}
+
+table(data$LunchType)
+
+```
+
+```{r}
+
+table(data$EthnicGroup)
+
+```
+# Transform the Quantitative Variables
+
+```{r}
+
+log(data$ReadingScore)
+
+```
+
+```{r}
+
+f <- (data$WritingScore)- mean(data$WritingScore)/ sd(data$WritingScore)
+f
+      
+```
+
+# Plotting the Qunatitative Variable
+
+# Histogram
+
+```{r}
+
+hist(data$MathScore,
+breaks=10, #Number of breaks in the histogram
+main= " Histogram of Math Score", #Main title
+xlab= "Math Score", #X-axis label
+ylab= "Frequency", #Y-axis label
+col= "green",  #Color of Bars
+)
+
+```
+
+# Scatter Plot
+
+```{r}
+
+
+plot(data$WritingScore, data$ReadingScore, col= c("green","blue"), main= "Scatter Plot")
+
+
+```
+
+
