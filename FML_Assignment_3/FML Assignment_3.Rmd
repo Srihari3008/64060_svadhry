@@ -3,8 +3,8 @@ title: "FML Assignment_3"
 author: "Sri Hari Vadhry"
 date: "2023-10-16"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 # Summary
@@ -198,7 +198,7 @@ Prob_W1_IN = (dt1[1,1]+dt1[1,2]+dt1[1,3])/(dt1[1,1]+dt1[1,2]+dt1[1,3]+dt1[2,1]+d
 Prob_T1_IN = (dt1[1,2]+dt1[2,2])/(dt1[1,1]+dt1[1,2]+dt1[1,3]+dt1[2,1]+dt1[2,2]+dt1[2,3])
 ProbIN    = (dt1[1,1]+dt1[1,2]+dt1[1,3]+dt1[2,1]+dt1[2,2]+dt1[2,3])/24
 
-Prob_IY_W1.T1= (P_W1_Iy*P_T1_Iy*PIy)/((P_W1_Iy*P_T1_Iy*PIy)+(P_W1_In*P_T1_In*PIn))
+Prob_IY_W1.T1= (Prob_W1_IY*Prob_T1_IY*ProbIY)/((Prob_W1_IY*Prob_T1_IY*ProbIY)+(Prob_W1_IN*Prob_T1_IN*ProbIN))
 Prob_IY_W1.T1
 
 
@@ -245,9 +245,12 @@ a.Run a naive Bayes classifier on the complete training set with the relevant pr
 set.seed(1)
 
 train_df <- sample(row.names(accidents),0.6*dim(accidents)[1])
+valid_df <- setdiff(row.names(accidents),train_df)
 
-train.df <- accidents[train_data,]
-valid.df <- accidents[valid_data,]
+
+
+train.df <- accidents[train_df,]
+valid.df <- accidents[valid_df,]
 
 # Defining a variable to be used
 
@@ -263,7 +266,7 @@ b. What is the overall error of validation set?
 
 ```{r}
 
-confusionMatrix =  confusionMatrix(valid.df$INJURY, predict(nbTotal, valid.df[, vars]), positive = "yes")
+confusionMatrix =  confusionMatrix(valid.df$INJURY, predict(naivepred, valid.df[, vars]), positive = "yes")
 
 print(confusionMatrix)
 
