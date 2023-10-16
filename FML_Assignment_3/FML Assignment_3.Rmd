@@ -25,7 +25,7 @@ TRAF_CON_R = 2 and WEATHER_R = 2 1.0000000
 
 b. Classify the 24 accidents using these probabilities and a cutoff of 0.5.
 A. Using prob and cutoff of 0.5 the below are the predictions of 24 accidents
- Qualititative predictions- 
+ Qualitative predictions- 
  0.6666667 0.1818182 0.0000000 0.0000000 0.6666667 0.1818182 0.1818182 0.6666667 0.1818182 0.1818182 0.1818182 0.0000000 0.6666667 0.6666667 0.6666667 0.6666667 0.1818182 0.1818182 0.1818182 0.1818182 0.6666667 0.6666667 1.0000000 0.1818182
  Quantitative Predictions-
  "yes" "no"  "no"  "no"  "yes" "no"  "no"  "yes" "no"  "no"  "no"  "no"  "yes" "yes" "yes" "yes"
@@ -276,7 +276,6 @@ cat("Overall Error", overall_error_rate)
 
 ```
 
-# CONCLUSION
 
 
 
