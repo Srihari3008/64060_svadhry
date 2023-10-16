@@ -2,7 +2,9 @@
 title: "FML Assignment_3"
 author: "Sri Hari Vadhry"
 date: "2023-10-16"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 # Summary
@@ -35,7 +37,8 @@ c. Compute manually the naive Bayes conditional probability of an injury given W
 A. The result of Naive Bayes when Weather =1 and Traf_Con=1 is 0
 
 d.Run a naive Bayes classifier on the 24 records and two predictors. Check the model output to obtain probabilities and classifications for all 24 records. Compare this to the exact Bayes classification. Are the resulting classifications equivalent? Is the ranking (= ordering) of observations equivalent?
-A. 
+
+A. As we have applied Naive Bayes Classifier to the 24 records and 2 predictors along with the check of models output it has been understood that resultant classifications and rank are distant.
 
 
 3.Let us now return to the entire dataset. Partition the data into training (60%) and validation (40%). 
