@@ -12,15 +12,43 @@ A. There is 50.88% chance that an injury has been occurred. This is because of t
 
 2. Select the first 24 records in the dataset and look only at the response (INJURY) and the two predictors WEATHER_R and TRAF_CON_R. Create a pivot table that examines INJURY as a function of the two predictors for these 24 records. Use all three variables in the pivot table as rows/columns.
 a.Compute the exact Bayes conditional probabilities of an injury (INJURY = Yes) given the six possible combinations of the predictors.
-A. Probability of predictions
+A. Following are the Bayes probability of INJURY = YES
+
+Probability of predictions
 
 TRAF_CON_R = 1 and WEATHER_R = 0.6666667
-TRAF_CON_R = 0 and WEATHER_R = 2, or 0.1818182.
+TRAF_CON_R = 0 and WEATHER_R = 2, 0.1818182.
 TRAF_CON_R = 1 and WEATHER_R = 1 0.0000000
 TRAF_CON_R = 1 and WEATHER_R = 2 0.0000000
 TRAF_CON_R = 2 and WEATHER_R = 1 0.0000000
 TRAF_CON_R = 2 and WEATHER_R = 2 1.0000000
 
+b. Classify the 24 accidents using these probabilities and a cutoff of 0.5.
+A. Using prob and cutoff of 0.5 the below are the predictions of 24 accidents
+ Qualititative predictions- 
+ 0.6666667 0.1818182 0.0000000 0.0000000 0.6666667 0.1818182 0.1818182 0.6666667 0.1818182 0.1818182 0.1818182 0.0000000 0.6666667 0.6666667 0.6666667 0.6666667 0.1818182 0.1818182 0.1818182 0.1818182 0.6666667 0.6666667 1.0000000 0.1818182
+ Quantitative Predictions-
+ "yes" "no"  "no"  "no"  "yes" "no"  "no"  "yes" "no"  "no"  "no"  "no"  "yes" "yes" "yes" "yes"
+ "no"  "no"  "no"  "no"  "yes" "yes" "yes" "no"
+
+c. Compute manually the naive Bayes conditional probability of an injury given WEATHER_R = 1 and TRAF_CON_R = 1
+A. The result of Naive Bayes when Weather =1 and Traf_Con=1 is 0
+
+d.Run a naive Bayes classifier on the 24 records and two predictors. Check the model output to obtain probabilities and classifications for all 24 records. Compare this to the exact Bayes classification. Are the resulting classifications equivalent? Is the ranking (= ordering) of observations equivalent?
+A. 
+
+
+3.Let us now return to the entire dataset. Partition the data into training (60%) and validation (40%). 
+  + Run a naive Bayes classifier on the complete training set with the relevant predictors (and INJURY as the response). Note that all predictors are categorical. Show the confusion matrix.
+A.           
+     Reference
+Prediction   no  yes
+       no  3203 5016
+       yes 2862 5793, Accuracy =0.5331
+
+b. What is the overall error of the validation set?
+A. Overall validation Error is 0.4668
+  
 
 # Problem Statement
 
@@ -150,8 +178,10 @@ for (i in 1:24) {
   }
   
 accidents24$prob.inj <- prob.inj
+accidents24$prob.inj
 
 accidents24$pred.prob <- ifelse(accidents24$prob.inj>0.5, "yes", "no")
+accidents24$pred.prob
 
 ```
 
