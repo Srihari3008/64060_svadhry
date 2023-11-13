@@ -1,6 +1,8 @@
 ---
-title: "FML Assignment 3"
-output: html_document
+title: "FML Assignment 4"
+output:
+  word_document: default
+  html_document: default
 date: "2023-11-11"
 ---
 
@@ -92,6 +94,17 @@ fviz_cluster(k5,data = pharma1)
 
 
 ```
+#Cluster 1 - AGN, PHA (low Asset_Turnover, High PE Ratio)
+
+#Cluster 2 - WPI, MRX,ELN,AVE (low PE_Ratio,high ROE,low ROA,low Net_Profit_Margin, high Rev_Growth)
+
+#Cluster 3 - AHM,SGP,WYE,BMY,AZN, ABT, NVS, LLY ( low Market_Cap,low Beta,low PE_Ratio,high Leverage,high Rev_Growth.)
+
+#Cluster 4 - JNJ, MRK, PFE,GSK (High Market_Cap,ROE, ROA,Asset_Turnover Ratio and low Beta/PE Ratio)
+
+#Cluster 5 - BAY, CHTT, IVX (low Rev_Growth,high Beta and levearge,low Net_Profit_Margin)
+
+
 
 ```{r}
 
@@ -139,34 +152,48 @@ clusplot(pharma1,fit$cluster,color =
 ## 2 Interpret the clusters with respect to the numerical variables used in forming the clusters. Is there a pattern in the clusters with respect to the numerical variables?
 
 ```{r}
-#Cluster 1 - AHM,SGP,WYE,BMY,AZN, ABT, NVS, LLY ( lowest Market_Cap,lowest Beta,lowest PE_Ratio,highest Leverage,highest Rev_Growth.)
 
-#Cluster 2 - BAY, CHTT, IVX (lowest Rev_Growth,highest Beta and levearge,lowest Net_Profit_Margin)
+clust_data <- ps[12:14]
+clust_data$Clusters <- k5$cluster
+ggplot(clust_data, aes(factor(Clusters), fill= Median_Recommendation))+ geom_bar(position='dodge')+labs(x='Clusters')
 
-#Cluster 3 - WPI, MRX,ELN,AVE (lowest PE_Ratio,highest ROE,lowest ROA,lowest Net_Profit_Margin, highest Rev_Growth)
 
-#Cluster 4 - AGN, PHA (lowest Beta,lowest Asset_Turnover, Highest PE Ratio)
+```
+# From the above graph the cluster 1 is having low profit and it has moderate leverage. The graph determines same level of moderate buy and Hold.
+# In cluster 2, it is having high revenue growth there might be a potential growth in these companies because it has equal level of moderate buy and sell
+# In cluster 3, There is high level of Hold and also the strong large amount of profit which will attract the investors to buy more of this cluster.
+# In cluster 4, There is high amount of market captalization and also high profit. It represents high potential of the company and has equal level of hold and buy.
+# In cluster 5, The graph represents high debt that leads to high leverage.
 
-#Cluster 5 - JNJ, MRK, PFE,GSK (Highest Market_Cap,ROE, ROA,Asset_Turnover Ratio and lowest Beta/PE Ratio)
 
-Pharma_Cluster <- pharma1[,c(12,13,14)]%>% mutate(clusters = k5$cluster)%>% arrange(clusters, ascending = TRUE)
-Pharma_Cluster
+```{r}
+
+ggplot(clust_data, aes(factor(Clusters), fill= Location))+ geom_bar(position='dodge')+labs(x='Clusters')
 
 
 ```
 
 ```{r}
+
+ggplot(clust_data, aes(factor(Clusters), fill= Exchange))+ geom_bar(position='dodge')+labs(x='Clusters')
+
+
+```
+
+
+
+```{r}
 # 3.Provide an appropriate name for each cluster using any or all of the variables in the dataset.
 
-# Cluster 1: Top Buying 
+# Cluster 1: Significant Risk
 
-# Cluster 2: Significant Risk 
+# Cluster 2: Potential Growth
 
-# Cluster 3: Attempt it 
+# Cluster 3: Perfect Asset
 
-# Cluster 4: Very Dangerous or Runaway 
+# Cluster 4: Long term investment
 
-# Cluster 5: A Perfect Asset
+# Cluster 5: Short term investment
 
 
 ```
